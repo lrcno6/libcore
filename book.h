@@ -5,13 +5,13 @@
 namespace lib{
 	class Book{
 		public:
-			static bool time_cmp(const Book&,const Book&);
+			static bool time_cmp(const Book&,const Book&)noexcept;
 			Book(const std::string &id,const std::string &name):m_id(id),m_name(name),m_time(time(nullptr)){}
 			Book(const std::string &id,std::string &&name):m_id(id),m_name(name),m_time(time(nullptr)){}
 			Book(std::string &&id,const std::string &name):m_id(id),m_name(name),m_time(time(nullptr)){}
-			Book(std::string &&id,std::string &&name):m_id(id),m_name(name),m_time(time(nullptr)){}
+			Book(std::string &&id,std::string &&name)noexcept:m_id(id),m_name(name),m_time(time(nullptr)){}
 			Book(std::ifstream&);
-			bool operator<(const Book &other)const{
+			bool operator<(const Book &other)const noexcept{
 				return m_id<other.m_id;
 			}
 			std::string show()const{

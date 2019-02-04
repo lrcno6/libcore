@@ -8,6 +8,6 @@ Book::Book(std::ifstream &fin){
 	while(m_name.empty() && fin);
 	fin>>m_time;
 }
-bool Book::time_cmp(const Book &x,const Book &y){
+bool Book::time_cmp(const Book &x,const Book &y)noexcept{
 	return x.m_time<y.m_time;
 }

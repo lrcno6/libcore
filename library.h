@@ -3,6 +3,7 @@
 #include<fstream>
 #include<vector>
 #include<set>
+#include<stdexcept>
 #include<algorithm>
 #include"book.h"
 namespace lib{
@@ -12,18 +13,24 @@ namespace lib{
 			static std::string new_id(size_t);
 			Library():books(m_books){}
 			Library(std::ifstream&);
-			// bug:when one ID is used twice
+			// it may throw an exception - type is logic_error
 			void lend(const std::string &id,const std::string &name){
-				m_books.insert(Book(id,name));
+				using namespace std;
+				lend(string(id),string(name));
 			}
 			void lend(const std::string &id,std::string &&name){
-				m_books.insert(Book(id,name));
+				using namespace std;
+				lend(string(id),name);
 			}
 			void lend(std::string &&id,const std::string &name){
-				m_books.insert(Book(id,name));
+				using namespace std;
+				lend(id,string(name));
 			}
 			void lend(std::string &&id,std::string &&name){
-				m_books.insert(Book(id,name));
+				Book book(id,name);
+				if(m_books.find(book)!=m_books.end())
+					throw std::logic_error("lib::Library::lend:the ID is used");
+				m_books.insert(book);
 			}
 			// it may throw an exception - type is out_of_range
 			void Return(const std::string &id){

@@ -10,3 +10,6 @@ debug:book.cpp library.cpp book.h library.h function.h
 	ar cr liblibcore.a book.o library.o
 clean:
 	rm liblibcore.a book.o library.o
+windows:
+	cl /c book.cpp library.cpp /EHsc
+	lib book.obj library.obj /out:libcore.lib

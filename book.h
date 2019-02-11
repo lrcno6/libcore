@@ -2,6 +2,7 @@
 #define _BOOK_H_
 #include<fstream>
 #include<string>
+#include<ctime>
 namespace lib{
 	class Book{
 		public:
@@ -15,7 +16,7 @@ namespace lib{
 				return m_id<other.m_id;
 			}
 			std::string show()const{
-				return "ID:"+m_id+" Borrower:"+m_name+" Time:"+ctime(&m_time);
+				return "ID:"+m_id+"\tBorrower:"+m_name+"\tTime:"+ctime(&m_time);
 			}
 			std::string save()const{
 				return m_id+"\n"+m_name+"\n"+std::to_string(m_time);

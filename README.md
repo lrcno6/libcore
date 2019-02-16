@@ -1,4 +1,4 @@
-## libcore alpha 1.4
+## libcore beta 1.4
 
 the core of the library manager
 
@@ -6,7 +6,7 @@ the core of the library manager
 
 ### version content
 
-alpha 1.4: add explicit for Library::Library and Book::Book
+beta 1.4: add explicit for Library::Library and Book::Book
 
 ---
 

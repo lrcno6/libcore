@@ -12,7 +12,7 @@ namespace lib{
 			const std::set<Book> &books;
 			static std::string new_id(size_t);
 			Library():books(m_books){}
-			Library(std::ifstream&);
+			explicit Library(std::ifstream&);
 			// it may throw an exception - type is logic_error
 			void lend(const std::string &id,const std::string &name){
 				using namespace std;

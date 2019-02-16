@@ -11,7 +11,7 @@ namespace lib{
 			Book(const std::string &id,std::string &&name):m_id(id),m_name(name),m_time(time(nullptr)){}
 			Book(std::string &&id,const std::string &name):m_id(id),m_name(name),m_time(time(nullptr)){}
 			Book(std::string &&id,std::string &&name)noexcept:m_id(id),m_name(name),m_time(time(nullptr)){}
-			Book(std::ifstream&);
+			explicit Book(std::ifstream&);
 			bool operator<(const Book &other)const noexcept{
 				return m_id<other.m_id;
 			}
